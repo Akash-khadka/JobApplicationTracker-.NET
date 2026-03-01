@@ -1,7 +1,6 @@
 ﻿using JobApplicationTracker.Application.DTOs;
 using JobApplicationTracker.Application.JobServices;
 using log4net;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
 

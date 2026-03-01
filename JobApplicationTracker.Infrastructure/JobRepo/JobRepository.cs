@@ -1,13 +1,6 @@
 ﻿using JobApplicationTracker.Domain.Models;
 using JobApplicationTracker.Infrastructure.Persistence;
 using log4net;
-using log4net.Repository.Hierarchy;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace JobApplicationTracker.Infrastructure.JobRepo
 {

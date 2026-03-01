@@ -2,12 +2,6 @@
 using JobApplicationTracker.Application.JobServices;
 using JobApplicationTracker.Infrastructure.CompanyRepo;
 using JobApplicationTracker.Infrastructure.JobRepo;
-using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace JobApplicationTracker.Infrastructure.IoC
 {

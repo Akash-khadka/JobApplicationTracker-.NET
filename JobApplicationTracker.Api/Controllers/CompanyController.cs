@@ -1,9 +1,7 @@
 ﻿using JobApplicationTracker.Application.CompanyService;
 using JobApplicationTracker.Application.DTOs;
 using log4net;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Razor.TagHelpers;
 using System.Text.Json;
 
 namespace JobApplicationTracker.Api.Controllers

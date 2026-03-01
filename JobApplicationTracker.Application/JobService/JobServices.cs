@@ -2,13 +2,6 @@
 using JobApplicationTracker.Domain.Models;
 using JobApplicationTracker.Infrastructure.JobRepo;
 using log4net;
-using log4net.Util;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http.Headers;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace JobApplicationTracker.Application.JobServices
 {

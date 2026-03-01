@@ -1,12 +1,5 @@
 ﻿using JobApplicationTracker.Domain.Models;
-using Microsoft.EntityFrameworkCore;
 using JobApplicationTracker.Infrastructure.Persistence;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore.Metadata;
 using log4net;
 
 namespace JobApplicationTracker.Infrastructure.CompanyRepo

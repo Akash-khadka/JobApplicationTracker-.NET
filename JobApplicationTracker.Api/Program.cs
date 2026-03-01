@@ -3,11 +3,8 @@ using JobApplicationTracker.Infrastructure.IoC;
 using JobApplicationTracker.Infrastructure.Persistence;
 using log4net;
 using log4net.Config;
-using log4net.Repository.Hierarchy;
-using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
-using System.Drawing.Text;
 using System.Reflection;
 
 

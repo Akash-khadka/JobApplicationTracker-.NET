@@ -1,13 +1,6 @@
-﻿using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace JobApplicationTracker.Infrastructure.Persistence
 {
