@@ -1,6 +1,7 @@
 ﻿using JobApplicationTracker.Domain.Models;
 using JobApplicationTracker.Infrastructure.Persistence;
 using log4net;
+using Microsoft.EntityFrameworkCore;
 
 namespace JobApplicationTracker.Infrastructure.CompanyRepo
 {
@@ -11,6 +12,22 @@ namespace JobApplicationTracker.Infrastructure.CompanyRepo
         public CompanyRepository(AppDbContext _context)
         {
             context= _context;
+        }
+
+        public int DeactivateAccount(int companyId)
+        {
+            try
+            {
+                return context.Company.Where(c => c.Id == companyId && c.IsActive)
+                    .ExecuteUpdate(s =>
+                    s.SetProperty(c => c.IsActive, false));
+                
+            }
+            catch(Exception ex)
+            {
+                log.DebugFormat("Exception Occurred during Company Deletion| Message: {0}", ex.Message);
+                throw;
+            }
         }
 
         public int CompanyRegistration(Company company)

@@ -62,6 +62,9 @@ namespace JobApplicationTracker.Infrastructure.Persistence
 
                 entity.Property(p => p.Address)
                 .HasMaxLength(225);
+
+                entity.Property(p => p.IsActive)
+                .HasDefaultValue(true);
                 
             });
            

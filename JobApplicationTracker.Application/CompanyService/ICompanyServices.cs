@@ -9,6 +9,8 @@ namespace JobApplicationTracker.Application.CompanyService
 {
     public interface ICompanyServices
     {
+
+        public Response DeactivateAccount(CompanyDeletionRequest request);
         public CompanyRegistrationResponse CompanyRegistration(CompanyRegistrationRequest request);
     }
 }

@@ -9,6 +9,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace JobApplicationTracker.Application.CompanyService
 {
@@ -20,6 +21,33 @@ namespace JobApplicationTracker.Application.CompanyService
         {
             repo = _repo;
         }
+
+        public Response DeactivateAccount(CompanyDeletionRequest request)
+        {
+            var response = new Response
+            {
+                ResponseCode = 101,
+                ResponseMessage = "Company Deletion Failed"
+            };
+            try
+            {
+                int repResp = repo.DeactivateAccount(request.CompanyId);
+                if (repResp != 0)
+                {
+                    response.ResponseCode = 100;
+                    response.ResponseMessage = "Company Deletion successful";
+                }
+              
+            }
+            catch (Exception ex)
+            {
+                log.DebugFormat("Exception Occurred while trying CompanyRegistration| Message: {0}", ex.Message);
+                response.ResponseCode = 102;
+                response.ResponseMessage = "Exception Occurred during CompanyRegistration!";
+            }
+            return response;
+        }
+
         public CompanyRegistrationResponse CompanyRegistration(CompanyRegistrationRequest request)
         {
             var response = new CompanyRegistrationResponse
@@ -47,10 +75,7 @@ namespace JobApplicationTracker.Application.CompanyService
                     response.ResponseMessage = "Company registration successful";
                     response.CompanyId = repResp;
                 }
-                else
-                {
-                    log.DebugFormat("Company Registration Failed");
-                }
+                
             }
             catch(Exception ex)
             {

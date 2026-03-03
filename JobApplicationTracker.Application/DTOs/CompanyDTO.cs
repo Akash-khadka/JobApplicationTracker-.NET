@@ -13,4 +13,9 @@
     {
         public int CompanyId { get; set; }
     }
+
+    public class CompanyDeletionRequest
+    {
+        public int CompanyId { get; set; }
+    }
 }

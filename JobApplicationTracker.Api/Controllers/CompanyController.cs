@@ -18,11 +18,20 @@ namespace JobApplicationTracker.Api.Controllers
         }
 
         [HttpPost]
-        [Route("CompanyRegistration")]
+        [Route("RegisterCompany")]
         public IActionResult CompanyRegistration(CompanyRegistrationRequest request)
         {
             log.InfoFormat("Company registration Request For Company :{0} | Request: {1}", request.CompanyName ,JsonSerializer.Serialize(request));
             var response = service.CompanyRegistration(request);
+            return Ok(response);
+        }
+
+        [HttpPost]
+        [Route("DeactivateAccount")]
+        public IActionResult DeactivateAccount(CompanyDeletionRequest request)
+        {
+            log.InfoFormat("Company Account Deactivation Request From Company ID: {0}", request.CompanyId);
+            var response = service.DeactivateAccount(request);
             return Ok(response);
         }
     }

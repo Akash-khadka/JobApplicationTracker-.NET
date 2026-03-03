@@ -9,5 +9,6 @@
         public string Address { get; set; }
         public string Email { get; set; }
         public List<Job>? Jobs { get; set; }
+        public bool IsActive { get; set; }
     }
 }
