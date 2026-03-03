@@ -24,18 +24,18 @@ namespace JobApplicationTracker.Infrastructure.Persistence
                 .HasForeignKey(c => c.CompanyId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-                entity.Property(p => p.JobTitle)
+                entity.Property(j => j.JobTitle)
                 .IsRequired()
                 .HasMaxLength(255);
 
-                entity.Property(p => p.Salary)
+                entity.Property(j => j.Salary)
                 .HasPrecision(18, 2)
                 .HasDefaultValue(0);
 
-                entity.Property(p => p.CreatedDate)
+                entity.Property(j => j.CreatedDate)
                 .HasDefaultValue(DateTime.Now);
 
-                entity.Property(p => p.Location)
+                entity.Property(j => j.Location)
                 .IsRequired()
                 .HasMaxLength(225);
                 
@@ -48,23 +48,23 @@ namespace JobApplicationTracker.Infrastructure.Persistence
                 entity.HasIndex(c => c.Email)
                 .IsUnique();
 
-                entity.Property(p => p.Contact)
+                entity.Property(c => c.Contact)
                 .IsRequired()
                 .HasMaxLength(14);
 
-                entity.Property(p => p.Email)
+                entity.Property(c => c.Email)
                 .IsRequired()
                 .HasMaxLength(225);
 
-                entity.Property(p => p.CompanyName)
+                entity.Property(c => c.CompanyName)
                 .IsRequired()
                 .HasMaxLength(225);
 
-                entity.Property(p => p.Address)
+                entity.Property(c => c.Address)
                 .HasMaxLength(225);
 
-                entity.Property(p => p.IsActive)
-                .HasDefaultValue(true);
+                entity.Property(c => c.IsActive)
+                .HasDefaultValue(true); //0 is true and 1 is false
                 
             });
            
