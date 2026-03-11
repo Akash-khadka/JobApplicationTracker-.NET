@@ -85,5 +85,45 @@ namespace JobApplicationTracker.Application.CompanyService
             }
             return response;
         }
+
+        public CompanyRegistrationResponse EditCompany(CompanyEditRequest request)
+        {
+            var response = new CompanyRegistrationResponse
+            {
+                ResponseCode = 101,
+                ResponseMessage = "Company Edit Failed"
+            };
+
+            try
+            {
+                var req = new Company
+                {
+                    Id= request.CompanyId,
+                    CompanyName= request.CompanyName,
+                    CompanyInfo= request.CompanyInfo,
+                    Email= request.Email,
+                    Address= request.Address,
+                    Contact= request.Contact
+                };
+
+
+                int repResp = repo.EditCompany(req);
+
+                if (repResp != 0)
+                {
+                    response.ResponseCode = 100;
+                    response.ResponseMessage = "Company Edit Request successful";
+                    response.CompanyId = repResp;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                log.DebugFormat("Exception Occurred while Editing Company Details| Message: {0}", ex.Message);
+                response.ResponseCode = 102;
+                response.ResponseMessage = "Exception Occurred during EditCompany!";
+            }
+            return response;
+        }
     }
 }

@@ -26,12 +26,22 @@ namespace JobApplicationTracker.Api.Controllers
             return Ok(response);
         }
 
+
         [HttpPost]
         [Route("DeactivateAccount")]
         public IActionResult DeactivateAccount(CompanyDeletionRequest request)
         {
             log.InfoFormat("Company Account Deactivation Request From Company ID: {0}", request.CompanyId);
             var response = service.DeactivateAccount(request);
+            return Ok(response);
+        }
+
+        [HttpPost]
+        [Route("EditCompanyInfo")]
+        public IActionResult EditCompany(CompanyEditRequest request)
+        {
+            log.InfoFormat("Edit Company Request| Company Id: {0}");
+            var response = service.EditCompany(request);
             return Ok(response);
         }
     }

@@ -12,5 +12,6 @@ namespace JobApplicationTracker.Application.CompanyService
 
         public Response DeactivateAccount(CompanyDeletionRequest request);
         public CompanyRegistrationResponse CompanyRegistration(CompanyRegistrationRequest request);
+        public CompanyRegistrationResponse EditCompany(CompanyEditRequest request);
     }
 }

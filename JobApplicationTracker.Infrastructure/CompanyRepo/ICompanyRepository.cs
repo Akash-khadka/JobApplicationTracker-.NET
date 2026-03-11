@@ -6,5 +6,6 @@ namespace JobApplicationTracker.Infrastructure.CompanyRepo
     {
         public int DeactivateAccount(int companyId);
         public int CompanyRegistration(Company company);
+        public int EditCompany(Company company);
     }
 }

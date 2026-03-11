@@ -14,7 +14,12 @@
         public int CompanyId { get; set; }
     }
 
-    public class CompanyDeletionRequest
+    public class CompanyDeletionRequest 
+    {
+        public int CompanyId { get; set; }
+    }
+
+    public class CompanyEditRequest: CompanyRegistrationRequest
     {
         public int CompanyId { get; set; }
     }

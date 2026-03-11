@@ -4,6 +4,7 @@ using JobApplicationTracker.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JobApplicationTracker.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260303220612_SetCompanyIsActiveDefaultValue")]
+    partial class SetCompanyIsActiveDefaultValue
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -80,7 +83,7 @@ namespace JobApplicationTracker.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2026, 3, 11, 21, 14, 56, 428, DateTimeKind.Local).AddTicks(5013));
+                        .HasDefaultValue(new DateTime(2026, 3, 3, 22, 6, 11, 890, DateTimeKind.Local).AddTicks(6563));
 
                     b.Property<string>("Experience")
                         .IsRequired()
@@ -111,52 +114,6 @@ namespace JobApplicationTracker.Infrastructure.Migrations
                     b.HasIndex("CompanyId");
 
                     b.ToTable("Job");
-                });
-
-            modelBuilder.Entity("JobApplicationTracker.Domain.Models.User", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Address")
-                        .IsRequired()
-                        .HasMaxLength(225)
-                        .HasColumnType("nvarchar(225)");
-
-                    b.Property<string>("Contact")
-                        .IsRequired()
-                        .HasMaxLength(14)
-                        .HasColumnType("nvarchar(14)");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasMaxLength(225)
-                        .HasColumnType("nvarchar(225)");
-
-                    b.Property<bool>("IsActive")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValue(true);
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("Email")
-                        .IsUnique();
-
-                    b.ToTable("User");
                 });
 
             modelBuilder.Entity("JobApplicationTracker.Domain.Models.Job", b =>

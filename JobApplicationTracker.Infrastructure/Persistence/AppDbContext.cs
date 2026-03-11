@@ -12,11 +12,12 @@ namespace JobApplicationTracker.Infrastructure.Persistence
 
         public DbSet<Job> Job { get; set; }
         public DbSet<Company> Company { get; set; }
+        public DbSet<User> User { get; set; }
 
         //schema configuration
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-           
+
             modelBuilder.Entity<Job>(entity =>
             {
                 entity.HasOne(c => c.Company)
@@ -41,7 +42,33 @@ namespace JobApplicationTracker.Infrastructure.Persistence
                 
             });
 
-       
+            modelBuilder.Entity<User>(entity =>
+            {
+                entity.HasIndex(u => u.Email)
+                .IsUnique();
+
+                entity.Property(u => u.Email)
+                .HasMaxLength(225);
+
+                entity.Property(u => u.Name)
+                .IsRequired()
+                .HasMaxLength(255);
+
+                entity.Property(u => u.Address)
+                .IsRequired()
+                .HasMaxLength(225);
+
+                entity.Property(u => u.Contact)
+                .IsRequired()
+                .HasMaxLength(14);
+
+                entity.Property(u => u.Password)
+                .HasMaxLength(20);
+
+                entity.Property(u => u.IsActive)
+                .HasDefaultValue(true); //0 is true and 1 is false
+            });
+
 
             modelBuilder.Entity<Company>(entity =>
             {

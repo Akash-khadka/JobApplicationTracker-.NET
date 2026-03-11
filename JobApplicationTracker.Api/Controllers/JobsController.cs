@@ -6,7 +6,7 @@ using System.Text.Json;
 
 namespace JobApplicationTracker.Api.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/Company/[controller]")]
     [ApiController]
     public class JobsController : ControllerBase
     {
@@ -20,11 +20,29 @@ namespace JobApplicationTracker.Api.Controllers
         
         [HttpPost]
         [Route("PostJob")]
-        public IActionResult PostJob(JobsPostRequest request)
+        public IActionResult PostJob(JobsPost request)
         {
             log.DebugFormat("Job Post Requested For Company : {0} | Request: {1}", request.CompanyId, JsonSerializer.Serialize(request));
             var response= service.PostJob(request);
             return Ok(response);
+        }
+
+        [HttpPost]
+        [Route("GetMyPostedJobs")] 
+        public IActionResult GetMyPostedJobs(GetMyJobsRequest request)
+        {
+            log.DebugFormat("GetMyPostedJobs Request By Company, CompanyId: {0}", request.CompanyId);
+            var response = service.GetMyPostedJobs(request);
+            return Ok(response);
+        }
+
+        [HttpPost]
+        [Route("EditJob")]
+        public IActionResult EditJob(PostedJobs request)
+        {
+            log.DebugFormat("Job Edit Request From Company : {0} | Request: {1}");
+            var response = service.EditJob(request);
+            return Ok();
         }
     }
 }

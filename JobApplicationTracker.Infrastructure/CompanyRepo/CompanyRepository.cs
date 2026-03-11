@@ -2,6 +2,7 @@
 using JobApplicationTracker.Infrastructure.Persistence;
 using log4net;
 using Microsoft.EntityFrameworkCore;
+using System.Net;
 
 namespace JobApplicationTracker.Infrastructure.CompanyRepo
 {
@@ -45,6 +46,30 @@ namespace JobApplicationTracker.Infrastructure.CompanyRepo
                 throw new InvalidOperationException("Exception Occurred!");
             }
 
+        }
+
+        public int EditCompany(Company request)
+        {
+            try
+            {
+                var company = context.Company.FirstOrDefault(c => c.Id == request.Id);
+                if (company == null) { return 0; }
+                else
+                {
+                    company.CompanyName = request.CompanyName;
+                    company.CompanyInfo= request.CompanyInfo;
+                    company.Address = request.Address;
+                    company.Contact = request.Contact;
+                    company.Email = request.Email;
+                    return context.SaveChanges();
+                }
+            }            
+            catch(Exception ex)
+            {
+                log.ErrorFormat("Exception Occurred During Edit Job| Exception: {0}", ex.Message);
+                throw;
+            }
+            throw new NotImplementedException();
         }
     }
 }

@@ -4,6 +4,8 @@ namespace JobApplicationTracker.Application.JobServices
 {
     public interface IJobServices
     {
-        public JobsPostResponse PostJob(JobsPostRequest request);
+        public JobsPostResponse EditJob(PostedJobs request);
+        public GetMyPostedJobsResponse GetMyPostedJobs(GetMyJobsRequest request);
+        public JobsPostResponse PostJob(JobsPost request);
     }
 }
